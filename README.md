@@ -1,54 +1,69 @@
-# Resume Keyword Extractor
+# 📄 Resume Keyword Extractor
 
-A web-based resume analysis application built with Python, Flask, HTML, CSS, and JavaScript. It extracts useful information from uploaded resumes and presents the results in a clean, user-friendly interface.
+A web-based application that extracts useful information, skills, qualifications, education, and keywords from uploaded resumes. The application supports PDF, DOCX, and TXT files and presents the extracted information in a structured, user-friendly format.
 
-## Overview
+## 🌐 Live Demo
 
-The Resume Keyword Extractor helps users identify skills, educational qualifications, certifications, and technical keywords from their resumes.
+**Try the application here:**
 
-Users can upload a supported resume file, review the extracted information on a separate results page, view the extracted text, and download the analysis report in JSON or CSV format.
+🚀 https://resume-keyword-extractor-za5t.onrender.com
 
-## Features
+**GitHub Repository:**
+https://github.com/Manju2016/Resume-Keyword-Extractor
 
-* **Resume Upload:** Upload PDF, DOCX, and TXT resumes.
-* **Text Extraction:** Extract readable text from supported documents.
-* **Skill Extraction:** Identify skills using predefined categories and matching rules.
-* **Education Analysis:** Extract educational qualifications from resume content.
-* **Certification Extraction:** Identify certifications listed under recognized resume sections.
-* **Technical Keywords:** Display technical terms identified in the resume.
-* **Results Dashboard:** Present extracted information in a structured interface.
-* **Resume Text Preview:** View the text extracted from the uploaded document.
-* **JSON Report:** Download the analysis results as a JSON file.
-* **CSV Report:** Export the analysis results to a CSV file that can be opened in spreadsheet applications.
-* **File Validation:** Restrict uploads to supported file extensions and a maximum file size of 10 MB.
-* **Responsive Interface:** Use the application through a modern web interface.
+---
 
-## Technology Stack
+## 📌 Project Overview
 
-### Frontend
+Resume Keyword Extractor is a Python-based web application designed to simplify the process of identifying important information from resumes.
 
-* HTML5
-* CSS3
-* JavaScript
-* Lucide Icons
+Users can upload their resumes and view extracted information without manually searching through the entire document. The application processes the uploaded file, extracts its text, identifies relevant information using a rule-based extraction approach, and displays the results on a dedicated results page.
 
-### Backend
+The project demonstrates document processing, text extraction, web development, and report generation using Python.
 
-* Python
-* Flask
+## ✨ Features
 
-### Document Processing
+* 📤 **Resume Upload:** Upload resumes through a simple web interface.
+* 📁 **Multiple File Formats:** Supports PDF, DOCX, and TXT files.
+* 📝 **Text Extraction:** Extracts text from uploaded documents.
+* 🧠 **Keyword Extraction:** Identifies relevant skills, qualifications, education, and other information using rule-based processing.
+* 📊 **Structured Results:** Displays extracted information in an organized format.
+* 📥 **JSON Export:** Download extracted results as a JSON report.
+* 📈 **CSV Export:** Download extracted results as a CSV report.
+* 💻 **Web Interface:** Provides an interactive interface built with HTML, CSS, and JavaScript.
+* ☁️ **Online Deployment:** Hosted on Render for access through a web browser.
 
-* PyMuPDF for PDF text extraction
-* python-docx for DOCX document processing
-* Python text-processing and keyword-matching logic
+## 🛠️ Technologies Used
 
-### Deployment
+| Technology     | Purpose                                 |
+| -------------- | --------------------------------------- |
+| Python         | Core application logic                  |
+| Flask          | Backend web framework                   |
+| PyMuPDF        | PDF text extraction                     |
+| python-docx    | DOCX document processing                |
+| HTML5          | Webpage structure                       |
+| CSS3           | Styling and layout                      |
+| JavaScript     | Frontend interactions                   |
+| JSON           | Structured report export                |
+| CSV            | Tabular report export                   |
+| Git and GitHub | Version control and source code hosting |
+| Render         | Application deployment                  |
 
-* GitHub for source code management
-* Render for web application hosting
+## ⚙️ How It Works
 
-## Project Structure
+1. The user opens the application.
+2. The user uploads a resume in PDF, DOCX, or TXT format.
+3. The backend processes the uploaded file.
+4. Text is extracted from the document.
+5. The keyword extraction component identifies relevant information.
+6. The application displays the extracted results.
+7. The user can download the results in JSON or CSV format.
+
+## 🖥️ Application Workflow
+
+**Resume Upload → Text Extraction → Keyword Processing → Results Display → Report Download**
+
+## 📂 Project Structure
 
 ```text
 Resume-Keyword-Extractor/
@@ -72,121 +87,150 @@ Resume-Keyword-Extractor/
     └── images/
 ```
 
-## Getting Started
+### File Description
+
+* `app.py` — Flask application, routing, result handling, and report downloads.
+* `resume_parser.py` — Extracts text from supported resume formats.
+* `keyword_extractor.py` — Processes extracted text and identifies relevant keywords and information.
+* `requirements.txt` — Lists the Python dependencies.
+* `templates/index.html` — Main resume upload page.
+* `templates/results.html` — Displays extracted results and download options.
+* `static/css/style.css` — Application styling.
+* `static/js/script.js` — Frontend interactions.
+* `.gitignore` — Excludes virtual environments, temporary files, and other files that should not be committed.
+
+## 🚀 Run the Project Locally
+
+Follow these steps to run the application on your computer.
 
 ### Prerequisites
 
-Install the following software:
+Install the following:
 
-* Python 3
-* Visual Studio Code
+* Python
 * Git
+* Visual Studio Code (recommended)
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-GITHUB-USERNAME/Resume-Keyword-Extractor.git
+git clone https://github.com/Manju2016/Resume-Keyword-Extractor.git
 ```
 
-Replace `YOUR-GITHUB-USERNAME` with your GitHub username.
-
-### 2. Open the project directory
+### 2. Open the Project Folder
 
 ```bash
 cd Resume-Keyword-Extractor
 ```
 
-### 3. Create a virtual environment
+### 3. Create a Virtual Environment
 
 ```bash
 python -m venv .venv
 ```
 
-### 4. Activate the virtual environment
+### 4. Activate the Virtual Environment
 
-On Windows PowerShell:
+**Windows Command Prompt:**
+
+```bash
+.venv\Scripts\activate
+```
+
+**Windows PowerShell:**
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 5. Install dependencies
+### 5. Install Dependencies
 
 ```bash
-python -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-### 6. Run the application
+### 6. Start the Application
 
 ```bash
 python app.py
 ```
 
-Open the local address displayed in your terminal, usually:
+### 7. Open the Website
 
-```text
+Open your browser and visit:
+
 http://127.0.0.1:5000
-```
 
-### 7. Analyze a resume
+The application should now be available locally.
 
-1. Open the application.
-2. Upload a PDF, DOCX, or TXT resume.
-3. Submit the file for analysis.
-4. Review the extracted skills, qualifications, certifications, and technical keywords.
-5. Preview the extracted resume text.
-6. Download the report in JSON or CSV format.
+## 📤 Supported File Formats
 
-## Deployment
+| Format        | Extension | Purpose                        |
+| ------------- | --------- | ------------------------------ |
+| PDF           | `.pdf`    | Extract text from PDF resumes  |
+| Word Document | `.docx`   | Extract text from Word resumes |
+| Text File     | `.txt`    | Process plain-text resumes     |
 
-This application can be deployed as a Flask web service on Render.
+## 📥 Export Options
 
-Recommended configuration:
+The application provides two report formats:
 
-* **Runtime:** Python 3
-* **Build Command:** `pip install -r requirements.txt`
-* **Start Command:** `gunicorn app:app`
+* **JSON:** Useful for storing and processing structured resume information programmatically.
+* **CSV:** Useful for viewing extracted information in spreadsheet applications that support CSV files.
 
-Connect the GitHub repository to Render and deploy the application using these settings.
+## 🔍 Current Implementation
 
-## Limitations
+The current version uses document text extraction and rule-based keyword processing to identify relevant information from resumes.
 
-* The current application uses rule-based text extraction and keyword matching; it is not a trained machine learning model.
-* Extraction accuracy depends on the document's text quality and formatting.
-* Scanned PDFs and image-only documents may require OCR before their text can be extracted.
-* The extractor does not guarantee that every skill, qualification, or certification will be identified correctly.
-* Extracted information should be reviewed by the user.
-* Analysis results are currently stored in server memory and may be lost when the application restarts.
-* This prototype is not intended to make hiring decisions or automatically determine a candidate's suitability for a job.
+It demonstrates a practical document-processing workflow, combining a Python backend with a browser-based interface and downloadable reports.
 
-## Future Improvements
+## ⚠️ Limitations
 
-* Add OCR support for scanned resumes.
-* Improve section detection and extraction accuracy.
-* Support additional document formats.
-* Add job-description matching and skill-gap analysis.
-* Improve the extraction of experience, projects, and contact details.
-* Introduce persistent storage with appropriate privacy controls.
-* Add automated tests and more robust error handling.
+* Keyword extraction depends on the implemented rules and patterns.
+* Resume layouts and formatting can affect text extraction.
+* Scanned PDFs may require OCR support to extract text reliably.
+* Extracted information may need manual verification.
+* The current version does not use a trained machine-learning model for keyword extraction.
+* Application results may not persist after a server restart because the current implementation uses in-memory storage.
 
-## Privacy
+## 🔮 Future Enhancements
 
-Resumes can contain personal information. Do not upload confidential documents to a public repository or use real resumes as test data without appropriate permission.
+Potential improvements include:
 
-The current prototype uses in-memory result storage rather than a persistent database. Review its data handling and deployment configuration before using it with sensitive information.
+* NLP-based skill and entity extraction.
+* Support for additional resume formats.
+* OCR integration for scanned resumes.
+* Resume-to-job-description matching.
+* Job-specific keyword analysis.
+* Improved extraction of education, experience, and certifications.
+* Database integration for persistent storage.
+* User authentication and secure document management.
+* More comprehensive validation and automated testing.
 
-## Disclaimer
+## 🎯 Project Objectives
 
-This project is an educational software prototype intended to demonstrate document processing, text extraction, keyword matching, and web application development. Results may be incomplete or inaccurate and should be verified by the user.
+* Simplify resume information extraction.
+* Demonstrate document parsing using Python.
+* Build a web application using Flask.
+* Present extracted information in a structured format.
+* Support downloadable reports.
+* Practice version control and application deployment.
 
-## Author
+## 👨‍💻 Author
 
 **Manjunath Sunil**
 
 B.Tech — Artificial Intelligence and Machine Learning
 
-GitHub: https://github.com/Manju2016
+### Project Links
 
+* **Live Application:** https://resume-keyword-extractor-za5t.onrender.com
+* **GitHub Repository:** https://github.com/Manju2016/Resume-Keyword-Extractor
 
+## 📜 License
 
-If you find this project useful, feel free to explore the source code and suggest improvements.
+This project is available for educational and portfolio purposes. A formal open-source license has not been specified yet.
+
+---
+
+⭐ If you find this project interesting, consider exploring the repository and its implementation.
