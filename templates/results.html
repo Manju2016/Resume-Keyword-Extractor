@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Resume Analysis Results · Resume Keyword Extractor</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    <!-- Icons -->
+    <script
+        src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"
+        defer
+    ></script>
+
+    <!-- JavaScript -->
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}"
+        defer
+    ></script>
+</head>
+
+<body data-page="results">
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-inner">
+
+            <a class="brand" href="/">
+                <i data-lucide="file-search" aria-hidden="true"></i>
+                <span>Resume Keyword Extractor</span>
+            </a>
+
+            <button
+                class="nav-toggle"
+                id="navToggle"
+                aria-label="Toggle menu"
+                aria-expanded="false"
+                aria-controls="navMenu"
+                type="button"
+            >
+                <i data-lucide="menu" aria-hidden="true"></i>
+            </button>
+
+            <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+                <a href="/">Home</a>
+                <a href="/#how-it-works">How It Works</a>
+                <a href="/#features">Features</a>
+                <a href="/#about">About</a>
+                <a class="btn btn-primary btn-sm" href="/#upload">
+                    Analyze Resume
+                </a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main id="main" class="section">
+        <div class="container">
+
+            <!-- Empty state -->
+            <section class="card empty-state" id="emptyState">
+
+                <span class="icon-box">
+                    <i data-lucide="file-x-2" aria-hidden="true"></i>
+                </span>
+
+                <h1>No Resume Analysis Available</h1>
+
+                <p>
+                    Upload a resume and complete the extraction process
+                    to view your results here.
+                </p>
+
+                <a class="btn btn-primary" href="/#upload">
+                    Upload Resume
+                </a>
+
+            </section>
+
+            <!-- Results view -->
+            <div id="resultsView" hidden>
+
+                <!-- Results heading and download buttons -->
+                <div class="results-head">
+
+                    <div>
+                        <h1>Resume Analysis Results</h1>
+
+                        <p class="muted">
+                            Review the information extracted from your uploaded resume.
+                        </p>
+
+                        <p class="file-line">
+                            <i data-lucide="file-text" aria-hidden="true"></i>
+                            <strong id="resultFile"></strong>
+                            <span class="status" id="resultStatus"></span>
+                        </p>
+                    </div>
+
+                    <div class="btn-row">
+
+                        <a class="btn btn-secondary" href="/#upload">
+                            Analyze Another Resume
+                        </a>
+
+                        <!-- Download JSON -->
+                        <button
+                            class="btn btn-primary"
+                            id="downloadBtn"
+                            type="button"
+                        >
+                            <i data-lucide="download" aria-hidden="true"></i>
+                            Download JSON Report
+                        </button>
+
+                        <!-- Download CSV -->
+                        <button
+                            class="btn btn-primary"
+                            id="downloadCsvBtn"
+                            type="button"
+                        >
+                            <i data-lucide="file-spreadsheet" aria-hidden="true"></i>
+                            Download CSV Report
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Download messages: keep this ID only once -->
+                <div
+                    id="downloadMessage"
+                    class="alert"
+                    role="alert"
+                    hidden
+                ></div>
+
+                <!-- Summary cards -->
+                <div class="grid grid-4" id="summaryCards">
+
+                    <div class="card stat">
+                        <i data-lucide="code-2" aria-hidden="true"></i>
+                        <strong id="statSkills">0</strong>
+                        <span>Skills Found</span>
+                    </div>
+
+                    <div class="card stat">
+                        <i data-lucide="graduation-cap" aria-hidden="true"></i>
+                        <strong id="statQuals">0</strong>
+                        <span>Qualifications Found</span>
+                    </div>
+
+                    <div class="card stat">
+                        <i data-lucide="award" aria-hidden="true"></i>
+                        <strong id="statCerts">0</strong>
+                        <span>Certifications Found</span>
+                    </div>
+
+                    <div class="card stat">
+                        <i data-lucide="cpu" aria-hidden="true"></i>
+                        <strong id="statKeywords">0</strong>
+                        <span>Technical Keywords Found</span>
+                    </div>
+
+                </div>
+
+                <!-- Skills -->
+                <section class="card block" aria-labelledby="skillsTitle">
+
+                    <h2 id="skillsTitle">Extracted Skills</h2>
+
+                    <p class="muted legend">
+                        <span class="tag tag-verified">Verified category match</span>
+                        <span class="tag tag-unverified">Unverified candidate</span>
+                    </p>
+
+                    <div id="skillsList"></div>
+
+                </section>
+
+                <!-- Education -->
+                <section class="card block" aria-labelledby="eduTitle">
+
+                    <h2 id="eduTitle">Education and Qualifications</h2>
+
+                    <div id="eduList"></div>
+
+                </section>
+
+                <!-- Certifications -->
+                <section class="card block" aria-labelledby="certTitle">
+
+                    <h2 id="certTitle">Certifications</h2>
+
+                    <div id="certList"></div>
+
+                </section>
+
+                <!-- Technical keywords -->
+                <section class="card block" aria-labelledby="kwTitle">
+
+                    <h2 id="kwTitle">Technical Keywords</h2>
+
+                    <div id="kwList"></div>
+
+                </section>
+
+                <!-- Extracted text -->
+                <details class="card block" id="textDetails">
+
+                    <summary>View Extracted Resume Text</summary>
+
+                    <pre id="resumeText"></pre>
+
+                </details>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="container copyright">
+            © <span id="year">2026</span>
+            Resume Keyword Extractor.
+            Built with Python, Flask, HTML, CSS, and JavaScript.
+        </div>
+
+    </footer>
+
+    <!-- Results data supplied by Flask -->
+    <script id="results-data" type="application/json">
+        {{ results_data | tojson }}
+    </script>
+
+    <script>
+        window.RESULTS_DATA = JSON.parse(
+            document.getElementById("results-data").textContent
+        );
+    </script>
+
+</body>
+</html>
+

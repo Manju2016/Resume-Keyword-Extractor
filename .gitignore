@@ -1,0 +1,29 @@
+```gitignore
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Editor settings
+.vscode/
+
+# Testing and cache
+.pytest_cache/
+.coverage
+
+# Temporary files
+*.log
+.DS_Store
+
+# Uploaded or private resume files
+uploads/
+resumes/
+```

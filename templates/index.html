@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Resume Keyword Extractor</title>
+
+  <meta name="description" content="Extract skills, qualifications, certifications and technical keywords from your resume.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js" defer></script>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><i data-lucide="file-search" aria-hidden="true"></i><span>Resume Keyword Extractor</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu"><i data-lucide="menu" aria-hidden="true"></i></button>
+      <nav class="nav-menu" id="navMenu" aria-label="Main">
+        <a href="#top">Home</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a class="btn btn-primary btn-sm" href="#upload">Analyze Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge">AI-POWERED RESUME ANALYSIS</span>
+          <h1>Unlock the Insights Hidden in <span class="accent">Your Resume.</span></h1>
+          <p class="lead">Extract skills, qualifications, certifications, and technical keywords from your resume in seconds. Turn unstructured resume content into organized, actionable information.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#upload">Extract Details</a>
+            <a class="btn btn-secondary" href="#features">Explore Features</a>
+          </div>
+          <ul class="benefits">
+            <li><i data-lucide="zap" aria-hidden="true"></i>Fast Resume Processing</li>
+            <li><i data-lucide="files" aria-hidden="true"></i>Multiple File Formats</li>
+            <li><i data-lucide="layout-list" aria-hidden="true"></i>Structured Results</li>
+          </ul>
+        </div>
+
+        <!-- Visual mockup only: no real analysis data -->
+        <div class="mockup" aria-hidden="true">
+          <div class="mock-card">
+            <div class="mock-file"><i data-lucide="file-text"></i><div><strong>resume.pdf</strong><small>Uploaded</small></div><i data-lucide="check-circle-2" class="ok"></i></div>
+            <div class="mock-lines"><span></span><span></span><span class="short"></span><span></span></div>
+            <div class="mock-progress"><div class="bar"><i></i></div><small>Analyzing document…</small></div>
+          </div>
+          <div class="mock-cats">
+            <span class="chip chip-soft">Skills</span><span class="chip chip-soft">Education</span><span class="chip chip-soft">Certifications</span>
+          </div>
+          <div class="mock-chips">
+            <span class="chip">keyword</span><span class="chip">keyword</span><span class="chip">keyword</span><span class="chip">keyword</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="upload">
+      <div class="container narrow">
+        <div class="section-head">
+          <h2>Start Your Resume Analysis</h2>
+          <p>Upload your resume to extract skills, qualifications, and technical keywords.</p>
+        </div>
+        <form class="card upload-card" id="uploadForm" action="/extract" method="post" enctype="multipart/form-data" novalidate>
+          <label class="dropzone" id="dropzone" for="resumeInput" tabindex="0">
+            <i data-lucide="upload-cloud" aria-hidden="true"></i>
+            <strong>Drop your resume here</strong>
+            <span>or click to browse files</span>
+            <small>PDF, DOCX, TXT · Maximum 10 MB</small>
+          </label>
+          <input type="file" id="resumeInput" name="resume" accept=".pdf,.docx,.txt" class="visually-hidden" aria-describedby="uploadMessage">
+
+          <div class="file-info" id="fileInfo" hidden>
+            <i data-lucide="file-check-2" aria-hidden="true"></i>
+            <div class="file-meta">
+              <strong id="fileName"></strong>
+              <small><span id="fileExt"></span> · <span id="fileSize"></span> · File selected</small>
+            </div>
+            <button type="button" class="icon-btn" id="removeFile" aria-label="Remove selected file"><i data-lucide="x" aria-hidden="true"></i></button>
+          </div>
+
+          <div id="uploadMessage" class="alert" role="alert" hidden></div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="extractBtn" disabled>
+            <span class="spinner" aria-hidden="true" hidden></span><span id="extractLabel">Extract Details</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section alt" id="how-it-works">
+      <div class="container">
+        <div class="section-head"><h2>How It Works</h2></div>
+        <div class="grid grid-3">
+          <article class="card feature"><span class="icon-box"><i data-lucide="upload" aria-hidden="true"></i></span><h3>Upload Your Resume</h3><p>Upload a resume in PDF, DOCX, or TXT format.</p></article>
+          <article class="card feature"><span class="icon-box"><i data-lucide="scan-text" aria-hidden="true"></i></span><h3>Extract Information</h3><p>The application processes the document and identifies relevant information.</p></article>
+          <article class="card feature"><span class="icon-box"><i data-lucide="file-search" aria-hidden="true"></i></span><h3>Explore Your Results</h3><p>View extracted skills, qualifications, and technical keywords in organized categories.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head"><h2>Features</h2><p>Keyword detection is based on pattern matching and may miss or misread some terms.</p></div>
+        <div class="grid grid-3">
+          <article class="card feature"><span class="icon-box"><i data-lucide="code-2" aria-hidden="true"></i></span><h3>Skill Extraction</h3><p>Identify programming languages, frameworks, libraries, and other skills.</p></article>
+          <article class="card feature"><span class="icon-box"><i data-lucide="graduation-cap" aria-hidden="true"></i></span><h3>Qualification Detection</h3><p>Identify educational qualifications and degree information.</p></article>
+          <article class="card feature"><span class="icon-box"><i data-lucide="cpu" aria-hidden="true"></i></span><h3>Technical Keyword Analysis</h3><p>Find relevant technologies, tools, and technical concepts.</p></article>
+          <article class="card feature"><span class="icon-box"><i data-lucide="award" aria-hidden="true"></i></span><h3>Certification Extraction</h3><p>Identify certification names mentioned in the resume.</p></article>
+          <article class="card feature"><span class="icon-box"><i data-lucide="layout-grid" aria-hidden="true"></i></span><h3>Organized Results</h3><p>Present extracted information in clear, categorized sections.</p></article>
+          <article class="card feature"><span class="icon-box"><i data-lucide="download" aria-hidden="true"></i></span><h3>Downloadable Reports</h3><p>Allow users to export the results after the backend is implemented.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="about">
+      <div class="container narrow center">
+        <span class="icon-box"><i data-lucide="shield-check" aria-hidden="true"></i></span>
+        <h2>Your Resume. Your Information.</h2>
+        <p class="lead">Resume content can contain personal information. The application is designed to process uploaded documents carefully and avoid unnecessary data retention.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="index.html"><i data-lucide="file-search" aria-hidden="true"></i><span>Resume Keyword Extractor</span></a>
+        <p>Extract skills, qualifications, and keywords from resumes into organized results.</p>
+      </div>
+      <nav aria-label="Footer"><a href="#top">Home</a><a href="#how-it-works">How It Works</a><a href="#features">Features</a><a href="results.html">Results</a></nav>
+      <div><strong>Built with</strong><p>Python, Flask, HTML, CSS, JavaScript</p></div>
+    </div>
+    <div class="container copyright">© <span id="year">2026</span> Resume Keyword Extractor. All rights reserved.</div>
+  </footer>
+</body>
+</html>
